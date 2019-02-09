@@ -1,0 +1,8 @@
+export const FIND_CITY = 'FIND_CITY'
+export const FIND_CITY_SUCCEEDED = 'FIND_CITY_SUCCEEDED'
+
+export const ADD_CITY = 'ADD_CITY'
+export const REMOVE_CITY = 'REMOVE_CITY'
+
+export const UPDATE_CITY = 'UPDATE_CITY'
+export const UPDATE_CITY_SUCCEEDED = 'UPDATE_CITY_SUCCEEDED'
