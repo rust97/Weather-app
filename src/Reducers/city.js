@@ -20,6 +20,7 @@ export function cityReducer(state = initialState, action) {
       return {
         ...state,
         cities: [...state.cities, action.city],
+        findCities: [],
       }
     case REMOVE_CITY:
       return {
@@ -28,24 +29,22 @@ export function cityReducer(state = initialState, action) {
           ...state.cities.slice(0, action.id),
           ...state.cities.slice(action.id + 1),
         ],
-
-        //cities: state.cities.filter(city => city.id !== action.id)
       }
-    /*case UPDATE_CITY:
-        return{
-          ...state,
-          isUpdate: true,
-        }
-      case UPDATE_CITY_SUCCEEDED:
-        return {
-          ...state,
-          isUpdate:false,
-          cities: state.cities.map(city => {
-            if (city.id === action.id)
-            return{...city, main: action.updateCityMain }
-            else return{city}
-          })
-        }*/
+    case UPDATE_CITY:
+      return {
+        ...state,
+        isUpdate: true,
+      }
+    case UPDATE_CITY_SUCCEEDED:
+      return {
+        ...state,
+        isUpdate: false,
+        cities: state.cities.map(city => {
+          if (city.id === action.id)
+            return { ...city, main: action.updateCityMain }
+          else return city
+        }),
+      }
     case FIND_CITY:
       return {
         ...state,

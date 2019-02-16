@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import Spinner from '../Spinner'
 
 class CitiesList extends Component {
+  onUpdate = id => {
+    this.props.updateCity(id)
+  }
   render() {
     const { cities, isUpdate } = this.props
     return (
@@ -12,7 +15,6 @@ class CitiesList extends Component {
           {cities.map((city, index) => (
             <li key={city.id}>
               <span>
-                {' '}
                 <p>
                   {city.name}, <b>{city.sys.country}</b>
                 </p>
@@ -28,6 +30,7 @@ class CitiesList extends Component {
                     href="#"
                     onClick={() => this.props.removeCity(index)}
                   />
+                  <a onClick={() => this.onUpdate(city.id)} className="arrow" />
                 </span>
               )}
             </li>
@@ -43,7 +46,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  //updateCity: id => dispatch(updateCity(id)),
+  updateCity: id => dispatch(updateCity(id)),
   removeCity: id => dispatch(removeCity(id)),
 })
 
